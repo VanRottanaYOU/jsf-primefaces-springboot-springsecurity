@@ -1,0 +1,65 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:sec="http://www.springframework.org/security/tags"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:composition template="template.xhtml">
+	<ui:define name="content">
+		<h:form id="form">
+			<p:dataTable var="student"
+				value="#{DtLazyViewStudent.lazyModelStudent}" paginator="true"
+				rows="10"
+				paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
+				rowsPerPageTemplate="5,10,15" selectionMode="single"
+				selection="#{DtLazyViewStudent.selectedStudent}" id="studentTable"
+				lazy="true">
+				<p:ajax event="rowSelect"
+					listener="#{DtLazyViewStudent.onRowSelect}"
+					update=":form:studentDetails"
+					oncomplete="PF('studentDialog').show()" />
+				<p:column headerText="Id" sortBy="#{student.id}"
+					filterBy="#{student.id}">
+					<h:outputText value="#{student.id}" />
+				</p:column>
+
+				<p:column headerText="Name" sortBy="#{student.name}"
+					filterBy="#{student.name}">
+					<h:outputText value="#{student.name}" />
+				</p:column>
+
+				<p:column headerText="Age" sortBy="#{student.age}"
+					filterBy="#{student.age}">
+					<h:outputText value="#{student.age}" />
+				</p:column>
+			</p:dataTable>
+
+			<p:dialog header="Student Detail" widgetVar="studentDialog"
+				modal="true" showEffect="fade" hideEffect="fade" resizable="false">
+				<p:outputPanel id="studentDetails" style="text-align:center;">
+					<p:panelGrid columns="2"
+						rendered="#{not empty DtLazyViewStudent.selectedStudent}"
+						columnClasses="label,value">
+
+						<h:outputText value="Id" />
+						<h:outputText value="#{DtLazyViewStudent.selectedStudent.id}" />
+
+						<h:outputText value="Nom" />
+						<h:outputText value="#{DtLazyViewStudent.selectedStudent.name}" />
+
+						<h:outputText value="Age" />
+						<h:outputText value="#{DtLazyViewStudent.selectedStudent.age}" />
+
+
+					</p:panelGrid>
+				</p:outputPanel>
+			</p:dialog>
+		</h:form>
+	</ui:define>
+</ui:composition>
+
+</html>

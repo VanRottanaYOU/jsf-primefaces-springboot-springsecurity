@@ -1,0 +1,11 @@
+Manifest-Version: 1.0
+Implementation-Title: jsf-primefaces-spring-security
+Implementation-Version: 0.0.1-SNAPSHOT
+Built-By: vryou
+Implementation-Vendor-Id: com.codenotfound
+Build-Jdk: 1.8.0_171
+Implementation-URL: http://persapiens.org/jsf-primefaces-spring-securi
+ ty
+Created-By: Maven Integration for Eclipse
+Implementation-Vendor: JoinFaces
+

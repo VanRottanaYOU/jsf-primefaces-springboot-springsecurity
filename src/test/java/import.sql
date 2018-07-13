@@ -1,0 +1,1 @@
+insert into student (age, name) values('71', 'edouard');

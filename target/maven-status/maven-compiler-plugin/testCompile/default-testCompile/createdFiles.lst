@@ -1,0 +1,5 @@
+com\gestion\etudiants\test\repositories\MockBDDTest.class
+com\gestion\etudiants\test\repositories\StudentRepositoryTest.class
+com\gestion\etudiants\test\services\StudentServiceImplMockTest.class
+com\gestion\etudiants\test\SpringBootWebApplicationTests.class
+com\gestion\etudiants\test\configuration\RepositoryConfiguration.class
